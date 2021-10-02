@@ -5,16 +5,15 @@ var Carousel = require('react-responsive-carousel').Carousel
 
 class DemoCarousel extends React.Component {
   render() {
+    const firstPlot =
+      films[0].plot.length < 51
+        ? films[0].plot
+        : films[0].plot.split('').slice(0, 50).join('') + '...'
     return (
-      <Carousel
-        showArrows={true}
-        onChange={onchange}
-        // onClickItem={onClickItem}
-        // onClickThumb={onClickThumb}
-      >
+      <Carousel showArrows={true}>
         <div>
           <img src={films[0].poster} alt="" />
-          <p className="legend">Legend 1</p>
+          <p className="legend">{firstPlot}</p>
         </div>
         <div>
           <img src={films[1].poster} alt="" />
