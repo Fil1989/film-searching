@@ -1,7 +1,6 @@
 import films from '../data/imdb.json'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
-// import DemoCarousel from './DemoCarousel'
 const Carousel = require('react-responsive-carousel').Carousel
 
 function HomePage() {
@@ -14,7 +13,6 @@ function HomePage() {
           .join('') + '...'
 
   return (
-    // <DemoCarousel />
     <div aria-label="Main films">
       <Carousel
         showArrows={true}
