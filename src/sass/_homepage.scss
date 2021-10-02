@@ -1,0 +1,22 @@
+.slider_img {
+  width: 50vw;
+  height: 50vh;
+}
+.slider_element {
+  width: 50vw;
+  height: 50vh;
+  border: 1px solid #222222;
+  position: relative;
+  & span {
+    color: #ffffff;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.slider_img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
