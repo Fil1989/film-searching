@@ -1,6 +1,6 @@
+import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-
-import Registration from './Registration'
+import Registration from './Registration.jsx'
 import HomePage from './HomePage'
 import Login from './Login'
 import Browse from './Browse'

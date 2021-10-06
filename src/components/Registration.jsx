@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import { usersAPI } from '../data/users'
+import { connect } from 'react-redux'
+// import { useSelector, useDispatch } from 'react-redux'
+import { postUserOperation } from '../redux/operations.js'
 
 class Registration extends Component {
   state = {
@@ -9,32 +11,27 @@ class Registration extends Component {
     email: '',
     password: '',
   }
-  handleChange = (e: { target: { value: string; name: string } }) => {
+  handleChange = e => {
     this.setState(currentState => ({
       ...currentState,
       [e.target.name]: e.target.value,
     }))
   }
-  handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  handleSubmit(e) {
     e.preventDefault()
-    // type userrsType = object[]
-    // const userrs: userrsType = [...usersAPI.users]
-    interface newUserTypes {
-      name: string | null
-      email: string | null
-      password: string | null
-      token: string | null
-    }
-    const newUser: newUserTypes = {
+
+    const newUser = {
       name: e.currentTarget[0].attributes[4].nodeValue,
       email: e.currentTarget[1].attributes[4].nodeValue,
       password: e.currentTarget[2].attributes[4].nodeValue,
-      token: null,
     }
+    this.props.onPostUserOperation(newUser)
     // userrs.push(newUser)
-    usersAPI.setusers = newUser
+    // usersAPI.setusers = newUser
 
-    console.log(usersAPI.users)
+    // console.log(usersAPI.users)
+    // const dispatch = useDispatch()
+    // dispatch(postUserOperation(newUser))
   }
 
   render() {
@@ -44,7 +41,10 @@ class Registration extends Component {
       <>
         <h1>Please, sign up</h1>
 
-        <form className="registration_form" onSubmit={this.handleSubmit}>
+        <form
+          className="registration_form"
+          onSubmit={this.handleSubmit.bind(this)}
+        >
           <TextField
             sx={{
               marginBottom: '20px',
@@ -87,4 +87,9 @@ class Registration extends Component {
     )
   }
 }
-export default Registration
+const mapDispatchToProps = dispatch => {
+  return {
+    onPostUserOperation: user => dispatch(postUserOperation(user)),
+  }
+}
+export default connect(null, mapDispatchToProps)(Registration)
