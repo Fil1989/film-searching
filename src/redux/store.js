@@ -6,34 +6,34 @@ import {
 import { firstReducer } from './reducers'
 import {
   persistStore,
-  // persistReducer,
-  // FLUSH,
-  // REHYDRATE,
-  // PAUSE,
-  // PERSIST,
-  // PURGE,
-  // REGISTER,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
 } from 'redux-persist'
-// import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
 // const middleware = [logger, ...getDefaultMiddleware()];
 const rootReducer = combineReducers({ firstReducer })
 
-// const persistConfig = {
-//   key: 'auth', //localStorage.set('token',...)
-//   storage: storage,
-//   whitelist: ['token', 'isAutenticated'], // token, isAutenticated will be persisted
-// }
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage,
+}
 
 const store = configureStore({
-  // reducer: persistReducer(persistConfig, rootReducer),
-  reducer: rootReducer,
-  // middleware:
-  //   getDefaultMiddleware({
-  //   serializableCheck: {
-  //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-  //   },
-  // }),
+  reducer: persistReducer(persistConfig, rootReducer),
+  // reducer: rootReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
   devTools: process.env.NODE_ENV === 'development',
 })
 
