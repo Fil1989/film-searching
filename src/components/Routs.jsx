@@ -6,7 +6,7 @@ import Login from './Login'
 import Browse from './Browse'
 import WrongWay from './WrongWay'
 
-function Routs() {
+function Routs(props) {
   return (
     <Switch>
       <Route path="/" exact component={HomePage} />

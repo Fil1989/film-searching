@@ -2,20 +2,22 @@ import React, { Component } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { connect } from 'react-redux'
-// import { useSelector, useDispatch } from 'react-redux'
 import { postUserOperation } from '../redux/operations.js'
+import {
+  writeNameToState,
+  writeEmailToState,
+  writePasswordToState,
+  resetInputs,
+  setIsRegistrationUrl,
+  resetIsRegistrationUrl,
+} from '../redux/actions.js'
 
 class Registration extends Component {
-  state = {
-    name: '',
-    email: '',
-    password: '',
+  componentDidMount() {
+    this.props.onSetIsRegistrationUrl()
   }
-  handleChange = e => {
-    this.setState(currentState => ({
-      ...currentState,
-      [e.target.name]: e.target.value,
-    }))
+  componentWillUnmount() {
+    this.props.onResetIsRegistrationUrl()
   }
   handleSubmit(e) {
     e.preventDefault()
@@ -26,16 +28,11 @@ class Registration extends Component {
       password: e.currentTarget[2].attributes[4].nodeValue,
     }
     this.props.onPostUserOperation(newUser)
-    // userrs.push(newUser)
-    // usersAPI.setusers = newUser
-
-    // console.log(usersAPI.users)
-    // const dispatch = useDispatch()
-    // dispatch(postUserOperation(newUser))
+    this.props.onResetInputs()
   }
 
   render() {
-    const { name, email, password } = this.state
+    // const { name, email, password } = this.state
 
     return (
       <>
@@ -49,8 +46,8 @@ class Registration extends Component {
             sx={{
               marginBottom: '20px',
             }}
-            value={name}
-            onChange={this.handleChange}
+            value={this.props.name}
+            onChange={e => this.props.onWriteNameToState(e)}
             label="Name"
             variant="filled"
             name="name"
@@ -60,9 +57,10 @@ class Registration extends Component {
             sx={{
               marginBottom: '20px',
             }}
-            value={email}
-            onChange={this.handleChange}
+            value={this.props.email}
+            onChange={e => this.props.onWriteEmailToState(e)}
             label="Email"
+            type="email"
             variant="filled"
             name="email"
             className="sign_up_input"
@@ -71,9 +69,10 @@ class Registration extends Component {
             sx={{
               marginBottom: '20px',
             }}
-            value={password}
-            onChange={this.handleChange}
+            value={this.props.password}
+            onChange={e => this.props.onWritePasswordToState(e)}
             label="Password"
+            type="password"
             variant="filled"
             name="password"
             className="sign_up_input"
@@ -87,9 +86,22 @@ class Registration extends Component {
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    name: state.name,
+    email: state.email,
+    password: state.password,
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
     onPostUserOperation: user => dispatch(postUserOperation(user)),
+    onWriteNameToState: e => dispatch(writeNameToState(e)),
+    onWriteEmailToState: e => dispatch(writeEmailToState(e)),
+    onWritePasswordToState: e => dispatch(writePasswordToState(e)),
+    onResetInputs: () => dispatch(resetInputs()),
+    onSetIsRegistrationUrl: () => dispatch(setIsRegistrationUrl()),
+    onResetIsRegistrationUrl: () => dispatch(resetIsRegistrationUrl()),
   }
 }
-export default connect(null, mapDispatchToProps)(Registration)
+export default connect(mapStateToProps, mapDispatchToProps)(Registration)

@@ -3,7 +3,13 @@ import {
   // getDefaultMiddleware,
   combineReducers,
 } from '@reduxjs/toolkit'
-import { firstReducer } from './reducers'
+import {
+  registratedUsers,
+  name,
+  email,
+  password,
+  isRegistrationUrl,
+} from './reducers'
 import {
   persistStore,
   persistReducer,
@@ -17,7 +23,13 @@ import {
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
 // const middleware = [logger, ...getDefaultMiddleware()];
-const rootReducer = combineReducers({ firstReducer })
+const rootReducer = combineReducers({
+  registratedUsers,
+  name,
+  email,
+  password,
+  isRegistrationUrl,
+})
 
 const persistConfig = {
   key: 'root',
