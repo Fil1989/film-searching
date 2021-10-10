@@ -1,14 +1,13 @@
-import {
-  configureStore,
-  // getDefaultMiddleware,
-  combineReducers,
-} from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import {
   registratedUsers,
-  name,
-  email,
-  password,
+  nameInput,
+  emailInput,
+  passwordInput,
   isRegistrationUrl,
+  token,
+  name,
+  // isLoggenOn,
 } from './reducers'
 import {
   persistStore,
@@ -25,10 +24,13 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 // const middleware = [logger, ...getDefaultMiddleware()];
 const rootReducer = combineReducers({
   registratedUsers,
-  name,
-  email,
-  password,
+  nameInput,
+  emailInput,
+  passwordInput,
   isRegistrationUrl,
+  token,
+  name,
+  // isLoggenOn,
 })
 
 const persistConfig = {

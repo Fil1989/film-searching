@@ -32,8 +32,6 @@ class Registration extends Component {
   }
 
   render() {
-    // const { name, email, password } = this.state
-
     return (
       <>
         <h1>Please, sign up</h1>
@@ -50,6 +48,7 @@ class Registration extends Component {
             onChange={e => this.props.onWriteNameToState(e)}
             label="Name"
             variant="filled"
+            type="text"
             name="name"
             className="sign_up_input"
           />
@@ -88,9 +87,9 @@ class Registration extends Component {
 }
 const mapStateToProps = state => {
   return {
-    name: state.name,
-    email: state.email,
-    password: state.password,
+    name: state.nameInput,
+    email: state.emailInput,
+    password: state.passwordInput,
   }
 }
 const mapDispatchToProps = dispatch => {

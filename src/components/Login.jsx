@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import { connect } from 'react-redux'
+import { loginUser } from '../redux/operations.js'
 
 class Login extends Component {
   state = {
@@ -8,13 +10,25 @@ class Login extends Component {
     password: '',
   }
 
-  handleChange = (e: { target: { value: string; name: string } }) => {
+  handleChange = e => {
     this.setState(currentState => ({
       ...currentState,
       [e.target.name]: e.target.value,
     }))
   }
-  handleSubmit() {}
+  handleSubmit(e) {
+    e.preventDefault()
+    const user = {
+      email: e.currentTarget[0].attributes[4].nodeValue,
+      password: e.currentTarget[1].attributes[4].nodeValue,
+    }
+    this.props.onLoginUser(user)
+    this.setState(currentState => ({
+      ...currentState,
+      email: '',
+      password: '',
+    }))
+  }
 
   render() {
     const { email, password } = this.state
@@ -22,7 +36,10 @@ class Login extends Component {
     return (
       <>
         <h1>Please, sign in</h1>
-        <form className="registration_form" onSubmit={this.handleSubmit}>
+        <form
+          className="registration_form"
+          onSubmit={this.handleSubmit.bind(this)}
+        >
           <TextField
             sx={{
               marginBottom: '20px',
@@ -30,6 +47,7 @@ class Login extends Component {
             value={email}
             onChange={this.handleChange}
             label="Email"
+            type="email"
             variant="filled"
             name="email"
             className="sign_up_input"
@@ -43,6 +61,7 @@ class Login extends Component {
             label="Password"
             variant="filled"
             name="password"
+            type="password"
             className="sign_up_input"
           />
           <Button type="submit" variant="contained">
@@ -53,4 +72,16 @@ class Login extends Component {
     )
   }
 }
-export default Login
+const mapStateToProps = state => {
+  return {
+    name: state.name,
+    email: state.email,
+    password: state.password,
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoginUser: user => dispatch(loginUser(user)),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

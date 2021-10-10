@@ -2,11 +2,11 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Registration from './Registration.jsx'
 import HomePage from './HomePage'
-import Login from './Login'
-import Browse from './Browse'
+import Login from './Login.jsx'
+import Browse from './Browse.jsx'
 import WrongWay from './WrongWay'
 
-function Routs(props) {
+function Routs() {
   return (
     <Switch>
       <Route path="/" exact component={HomePage} />
