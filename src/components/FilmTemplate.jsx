@@ -1,4 +1,9 @@
+// import { useEffect } from 'react'
+
 function FilmTemplate({ searchResults }) {
+  //   useEffect(() => {
+  //     setVisible(true)
+  //   }, [searchResults && searchResults.length])
   console.log(searchResults)
   return (
     <>

@@ -4,26 +4,25 @@ import Button from '@mui/material/Button'
 import films from '../data/imdb.json'
 import FilmTemplate from './FilmTemplate.jsx'
 import amountControles from '../controles/amountControles.js'
-// import { useInView } from 'react-intersection-observer'
+import { InView } from 'react-intersection-observer'
 // import ChangeControles from './ChangeControles.jsx'
-
+// import SampleComp from './SampleComp.jsx'
 function Browse() {
   const [search, setSearch] = useState('')
+  const [visible, setVisible] = useState(false)
   let [results, setResults] = useState([])
-
-  // const [ref, inView] = useInView({
-  //   threshold: 0,
-  // })
 
   useEffect(() => {
     amountControles.resetPage()
   }, [])
+
   return (
     <section className="search_component" aria-label="Main input field">
       <form
         className="search_form"
         onSubmit={e => {
           e.preventDefault()
+          amountControles.resetPage()
           const resultsOfSearch = films.filter(
             film =>
               film.title &&
@@ -35,6 +34,9 @@ function Browse() {
           )
           amountControles.setAllResults = resultsOfSearch
           setResults(amountControles.getResults)
+          setTimeout(() => {
+            setVisible(true)
+          }, 500)
         }}
       >
         <TextField
@@ -58,34 +60,23 @@ function Browse() {
       </form>
       <ul className="results">
         <FilmTemplate searchResults={results} />
-        {/* {inView && (
-          <ChangeControles
-            searchResults={results}
-            setNextResults={setResults}
-          />
-        )} */}
 
-        {/* <div className="alfa">
-          <p>1</p>
-          {inView && (
-            <>
-              <p>Naw all is ok</p>
-              <p>Naw all is ok</p>
-              <p>Naw all is ok</p>
-              <p>Naw all is ok</p>
-              <p>Naw all is ok</p>
-              <p>Naw all is ok</p>
-              <p>Naw all is ok</p>
-              <p>Naw all is ok</p>
-            </>
+        <InView
+          as="div"
+          onChange={inView => {
+            if (inView) {
+              amountControles.incrementPage()
+              setResults(amountControles.getResults)
+            }
+          }}
+        >
+          {visible && (
+            <Button type="button" variant="contained" className="btn_more">
+              More...
+            </Button>
           )}
-        </div> */}
+        </InView>
       </ul>
-      {/* {results.length !== 0 && (
-        <div className="btn_primary" ref={ref}>
-          More...
-        </div> 
-      )}*/}
     </section>
   )
 }
