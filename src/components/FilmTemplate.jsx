@@ -23,7 +23,7 @@ function FilmTemplate({ searchResults, setInfo }) {
                 src={info}
                 alt="icon info"
                 className="info_icon"
-                onClick={() =>
+                onClick={() => {
                   setInfo({
                     open: true,
                     plot: film.plot,
@@ -31,7 +31,8 @@ function FilmTemplate({ searchResults, setInfo }) {
                     actors: film.actors,
                     rating: film.imdbrating,
                   })
-                }
+                  document.body.style.overflow = 'hidden'
+                }}
               />
             </div>
           </li>
