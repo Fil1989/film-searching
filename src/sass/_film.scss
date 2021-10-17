@@ -23,5 +23,30 @@
   border: 1px solid #222222;
   border-radius: 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: left;
+  position: relative;
+  min-height: 35px;
+  & span {
+    // border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    width: 25%;
+    padding: 0 2px;
+    border-right: 1px solid #222222;
+  }
+
+  & span:nth-child(2n) {
+    background-color: #c4f7d8;
+  }
+  & span:nth-child(2n + 1) {
+    background-color: #f7f9ac;
+  }
+}
+.info_icon {
+  cursor: pointer;
+  max-height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
 }

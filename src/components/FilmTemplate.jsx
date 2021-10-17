@@ -1,9 +1,6 @@
-// import { useEffect } from 'react'
+import info from '../assets/Information_icon.svg.png'
 
-function FilmTemplate({ searchResults }) {
-  //   useEffect(() => {
-  //     setVisible(true)
-  //   }, [searchResults && searchResults.length])
+function FilmTemplate({ searchResults, setInfo }) {
   console.log(searchResults)
   return (
     <>
@@ -21,6 +18,21 @@ function FilmTemplate({ searchResults }) {
               <span>{film.genre} </span>
               <span>{film.director} </span>
               <span>{film.year}</span>
+
+              <img
+                src={info}
+                alt="icon info"
+                className="info_icon"
+                onClick={() =>
+                  setInfo({
+                    open: true,
+                    plot: film.plot,
+                    writer: film.writer,
+                    actors: film.actors,
+                    rating: film.imdbrating,
+                  })
+                }
+              />
             </div>
           </li>
         ))}
