@@ -20,11 +20,13 @@
   transform: translate(-50%, -50%);
   z-index: 100;
   opacity: 1;
-
+  border-radius: 30px;
   width: 400px;
   height: 400px;
   border: 1px solid #222222;
   background-color: #ffffff;
+  //   transform: scale(1.1);
+  transition: all 2500ms cubic-bezier(0.075, 0.165, 0.82, 1);
 }
 .close_button {
   position: absolute;
@@ -34,4 +36,14 @@
 }
 .characteristics {
   margin-top: 10px;
+  list-style-type: none;
+
+  & span {
+    font-weight: bold;
+  }
+}
+img[alt='Dislike'],
+img[alt='Like'] {
+  width: 20px;
+  height: 20px;
 }
