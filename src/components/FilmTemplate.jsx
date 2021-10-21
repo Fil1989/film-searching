@@ -1,6 +1,6 @@
 import info from '../assets/Information_icon.svg.png'
 
-function FilmTemplate({ searchResults, setInfo }) {
+function FilmTemplate({ searchResults, setInfo, token }) {
   console.log(searchResults)
   return (
     <>
@@ -14,27 +14,29 @@ function FilmTemplate({ searchResults, setInfo }) {
             >
               <span className="title">{film.title}</span>
             </div>
-            <div className="info">
-              <span>{film.genre} </span>
-              <span>{film.director} </span>
-              <span>{film.year}</span>
+            {token && (
+              <div className="info">
+                <span>{film.genre} </span>
+                <span>{film.director} </span>
+                <span>{film.year}</span>
 
-              <img
-                src={info}
-                alt="icon info"
-                className="info_icon"
-                onClick={() => {
-                  setInfo({
-                    open: true,
-                    plot: film.plot,
-                    writer: film.writer,
-                    actors: film.actors,
-                    rating: film.imdbrating,
-                  })
-                  document.body.style.overflow = 'hidden'
-                }}
-              />
-            </div>
+                <img
+                  src={info}
+                  alt="icon info"
+                  className="info_icon"
+                  onClick={() => {
+                    setInfo({
+                      open: true,
+                      plot: film.plot,
+                      writer: film.writer,
+                      actors: film.actors,
+                      rating: film.imdbrating,
+                    })
+                    document.body.style.overflow = 'hidden'
+                  }}
+                />
+              </div>
+            )}
           </li>
         ))}
     </>

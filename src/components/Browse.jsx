@@ -5,9 +5,11 @@ import FilmTemplate from './FilmTemplate.jsx'
 import amountControles from '../controles/amountControles.js'
 import SearchForm from './SearchForm.jsx'
 import { InView } from 'react-intersection-observer'
+import { useSelector, useDispatch } from 'react-redux'
 
 function Browse() {
   const [visible, setVisible] = useState(false)
+  const token = useSelector(state => state.token)
   const [info, setInfo] = useState({
     open: false,
     plot: '',
@@ -34,7 +36,7 @@ function Browse() {
         />
       )}
       <ul className="results">
-        <FilmTemplate searchResults={results} setInfo={setInfo} />
+        <FilmTemplate searchResults={results} setInfo={setInfo} token={token} />
 
         <InView
           as="div"
