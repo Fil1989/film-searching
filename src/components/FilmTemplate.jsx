@@ -1,7 +1,10 @@
 import info from '../assets/Information_icon.svg.png'
+import { useSelector } from 'react-redux'
 
-function FilmTemplate({ searchResults, setInfo, token }) {
+function FilmTemplate({ searchResults, setInfo }) {
   console.log(searchResults)
+  const token = useSelector(state => state.token)
+
   return (
     <>
       {searchResults.length !== 0 &&

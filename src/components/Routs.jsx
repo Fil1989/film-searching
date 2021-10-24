@@ -14,11 +14,6 @@ function Routs() {
     <Switch>
       <Route path="/" exact component={HomePage} />
       <Route path="/registration" exact component={Registration} />
-      {/* {afterLogin ? (
-        <Redirect to="/browse" component={Browse} />
-      ) : (
-        <Route path="/login" exact component={Login} />
-      )} */}
       <Route path="/login" exact component={Login}>
         {afterLogin && <Redirect to="/browse" />}
       </Route>
