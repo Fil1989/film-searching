@@ -21,12 +21,15 @@ class Registration extends Component {
   }
   handleSubmit(e) {
     e.preventDefault()
+    console.dir(e.currentTarget)
 
     const newUser = {
-      name: e.currentTarget[0].attributes[4].nodeValue,
-      email: e.currentTarget[1].attributes[4].nodeValue,
-      password: e.currentTarget[2].attributes[4].nodeValue,
+      name: e.currentTarget[0].attributes.value.nodeValue,
+      email: e.currentTarget[1].attributes.value.nodeValue,
+      password: e.currentTarget[2].attributes.value.nodeValue,
     }
+    console.log(newUser)
+
     this.props.onPostUserOperation(newUser)
     this.props.onResetInputs()
   }
@@ -51,6 +54,7 @@ class Registration extends Component {
             type="text"
             name="name"
             className="sign_up_input"
+            pattern={/[a-zA-Z]/g}
           />
           <TextField
             sx={{
@@ -60,6 +64,10 @@ class Registration extends Component {
             onChange={e => this.props.onWriteEmailToState(e)}
             label="Email"
             type="email"
+            // inputProps={{
+            //   pattern:
+            //     '(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])).){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)])',
+            // }}
             variant="filled"
             name="email"
             className="sign_up_input"
@@ -75,7 +83,10 @@ class Registration extends Component {
             variant="filled"
             name="password"
             className="sign_up_input"
-            // inputProps={{ pattern: '[a-z]{10}' }}
+            inputProps={{
+              pattern:
+                '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@[-`{-~]).{6,}',
+            }}
           />
           <Button type="submit" variant="contained">
             Submit

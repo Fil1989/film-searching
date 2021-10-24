@@ -5,7 +5,7 @@ import FilmTemplate from './FilmTemplate.jsx'
 import amountControles from '../controles/amountControles.js'
 import SearchForm from './SearchForm.jsx'
 import { InView } from 'react-intersection-observer'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 function Browse() {
   const [visible, setVisible] = useState(false)

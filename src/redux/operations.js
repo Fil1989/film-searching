@@ -19,8 +19,8 @@ const authorizationController = {
 }
 export const postUserOperation = user => async dispatch => {
   try {
-    const newUser = await axios.post('/register', user)
-    dispatch(addUserSuccess(newUser.data.user))
+    const { data } = await axios.post('/register', user)
+    dispatch(addUserSuccess(data.user))
   } catch (error) {
     dispatch(addUserError(error.message))
   }
