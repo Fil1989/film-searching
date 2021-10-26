@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-// import PrivateRoute from './components/PrivateRoute.jsx'
 import { NavLink } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import { useSelector, useDispatch } from 'react-redux'

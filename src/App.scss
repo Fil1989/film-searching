@@ -1,17 +1,40 @@
 .logo {
-  height: 80px;
-  max-width: 100%;
-  margin-right: 20px;
+  height: 60px;
+  min-width: 50px;
+  // @media screen and (max-width: 360px) {
+  //     height: 40px;
+
+  //   }
+  @media screen and (min-width: 480px) {
+    margin-right: 5px;
+  }
+  @media screen and (min-width: 768px) {
+    height: 80px;
+
+    margin-right: 20px;
+  }
 }
 
 .main_menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
+  @media screen and (min-width: 519px) {
+    margin-bottom: 0px;
+  }
 }
 .main_button {
   width: 100px;
   height: 40px;
+  @media screen and (min-width: 480px) {
+    width: 80px;
+    font-size: 14px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 100px;
+    height: 40px;
+  }
 }
 .main_button_link {
   margin-left: 10px;
