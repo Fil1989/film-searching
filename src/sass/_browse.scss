@@ -2,6 +2,11 @@
   display: flex;
   justify-content: center;
   padding-top: 20px;
+  @media screen and (max-width: 360px) {
+    min-width: 280px;
+    max-width: 290px;
+    margin: 0px;
+  }
 }
 .search_input {
   width: 500px;
@@ -22,9 +27,4 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-}
-.alfa {
-  // position: fixed;
-  background-color: green;
-  height: 100vh;
 }
