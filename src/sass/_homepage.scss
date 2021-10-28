@@ -3,6 +3,12 @@
   height: 50vh;
   position: relative;
 }
+.moovie_poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
 .slider_element_text {
   color: #ffffff;
   z-index: 1;

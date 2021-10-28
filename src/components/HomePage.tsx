@@ -21,7 +21,11 @@ function HomePage() {
         className="carousell"
       >
         <div className="slider_element">
-          <img src={films[0].poster} alt={films[0].title} />
+          <img
+            src={films[0].poster}
+            alt={films[0].title}
+            className="moovie_poster"
+          />
           <div
             className="slider_element_text"
             aria-label="Description of the moovie"
@@ -31,7 +35,11 @@ function HomePage() {
           </div>
         </div>
         <div className="slider_element">
-          <img src={films[1].poster} alt={films[1].title} />
+          <img
+            src={films[1].poster}
+            alt={films[1].title}
+            className="moovie_poster"
+          />
           <div
             className="slider_element_text"
             aria-label="Description of the moovie"
@@ -41,7 +49,11 @@ function HomePage() {
           </div>{' '}
         </div>
         <div className="slider_element">
-          <img src={films[2].poster} alt={films[2].title} />
+          <img
+            src={films[2].poster}
+            alt={films[2].title}
+            className="moovie_poster"
+          />
           <div
             className="slider_element_text"
             aria-label="Description of the moovie"
