@@ -48,7 +48,11 @@ export const currentUser = () => async (dispatch, getState) => {
   try {
     const { token } = await getState()
     authorizationController.set(token)
-    const { token: currentToken, name } = await axios.get('/current')
+    const {
+      data: {
+        user: { token: currentToken, name },
+      },
+    } = await axios.get('/current')
     authorizationController.unset()
     dispatch(currentUserSuccess(currentToken, name))
   } catch (error) {

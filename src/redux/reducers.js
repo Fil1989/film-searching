@@ -73,7 +73,7 @@ export const token = createReducer(initialState.token, {
   'Server/CurrentUserSuccess': (state, action) => action.payload.token,
   'Server/CurrentUserError': (state, action) => {
     console.error(action.payload)
-    return state
+    return null
   },
   'State/TokenNull': (state, action) => null,
 })
