@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button'
-import Modal from './Modal.jsx'
+import Modal from './Modal'
 import FilmTemplate from './FilmTemplate.jsx'
 import amountControles from '../controles/amountControles.js'
 import SearchForm from './SearchForm.jsx'
 import { InView } from 'react-intersection-observer'
+import { IInfo, IResults } from '../interfaces/Main.interface'
 
 function Browse() {
-  const [visible, setVisible] = useState(false)
-  const [info, setInfo] = useState({
+  const [visible, setVisible] = useState<boolean>(false)
+  const [info, setInfo] = useState<IInfo>({
     open: false,
     plot: '',
     writer: '',
     actors: '',
     rating: '',
   })
-  let [results, setResults] = useState([])
+  // type iteralResults = never[] | IResults[]
+  let [results, setResults] = useState<IResults[]>([])
 
   useEffect(() => {
     amountControles.resetPage()

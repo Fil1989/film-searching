@@ -12,23 +12,31 @@ import {
   resetIsRegistrationUrl,
 } from '../redux/actions.js'
 
-class Registration extends Component {
+// interface Props {
+// onPostUserOperation: user => dispatch(postUserOperation(user)),
+//     onWriteNameToState: e => dispatch(writeNameToState(e)),
+//     onWriteEmailToState: e => dispatch(writeEmailToState(e)),
+//     onWritePasswordToState: e => dispatch(writePasswordToState(e)),
+//     onResetInputs: () => dispatch(resetInputs()),
+//     onSetIsRegistrationUrl: () => dispatch(setIsRegistrationUrl()),
+//     onResetIsRegistrationUrl: () => dispatch(resetIsRegistrationUrl()),
+// }
+
+class Registration extends Component /*<Props>*/ {
   componentDidMount() {
     this.props.onSetIsRegistrationUrl()
   }
   componentWillUnmount() {
     this.props.onResetIsRegistrationUrl()
   }
-  handleSubmit(e) {
+  handleSubmit(e /*: React.FormEvent<HTMLFormElement>*/) {
     e.preventDefault()
-    console.dir(e.currentTarget)
 
     const newUser = {
       name: e.currentTarget[0].attributes.value.nodeValue,
       email: e.currentTarget[1].attributes.value.nodeValue,
       password: e.currentTarget[2].attributes.value.nodeValue,
     }
-    console.log(newUser)
 
     this.props.onPostUserOperation(newUser)
     this.props.onResetInputs()

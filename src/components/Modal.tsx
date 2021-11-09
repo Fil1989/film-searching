@@ -2,9 +2,32 @@
 import Button from '@mui/material/Button'
 import likeThumb from '../assets/like.png'
 import dislikeThumb from '../assets/dislike.png'
+// import { IInfo } from '../interfaces/Main.interface'
+// import { AnyARecord } from 'dns'
 
-const Modal = ({ plot, actors, rating, writer, setInfo }) => {
+// type IInfo = {
+//   open: boolean
+//   plot: string
+//   writer: string
+//   actors: string
+//   rating: string
+// }
+
+// interface IInfoArg {
+//   value: (previousValue: IInfo) => IInfo
+// }
+
+interface Props {
+  plot: string
+  actors: string
+  rating: string
+  writer: string
+  setInfo: (value: any) => void
+}
+
+const Modal = ({ plot, actors, rating, writer, setInfo }: Props) => {
   //   const [thumb, setThumb] = useState(null)
+
   return (
     <div aria-label="Modal window" className="modal_main">
       <div className="modal_back" aria-label="Background of modal window"></div>
@@ -15,7 +38,10 @@ const Modal = ({ plot, actors, rating, writer, setInfo }) => {
             className="close_button"
             variant="contained"
             onClick={() => {
-              setInfo(previousValue => ({ ...previousValue, open: false }))
+              setInfo((previousValue: any) => ({
+                ...previousValue,
+                open: false,
+              }))
               document.body.style.overflow = 'scroll'
             }}
           >
@@ -32,7 +58,7 @@ const Modal = ({ plot, actors, rating, writer, setInfo }) => {
           <li className="characteristics">
             <span>Rating: </span>
             {rating}{' '}
-            {rating < 7 ? (
+            {Number.parseInt(rating) < 7 ? (
               <img src={dislikeThumb} alt="Dislike" />
             ) : (
               <img src={likeThumb} alt="Like" />

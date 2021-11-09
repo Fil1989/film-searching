@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 import HomePage from './HomePage'
 import Login from './Login.jsx'
-import Browse from './Browse.jsx'
+import Browse from './Browse.tsx'
 import WrongWay from './WrongWay'
 
 function Routs() {
