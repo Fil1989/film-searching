@@ -2,27 +2,16 @@
 import Button from '@mui/material/Button'
 import likeThumb from '../assets/like.png'
 import dislikeThumb from '../assets/dislike.png'
-// import { IInfo } from '../interfaces/Main.interface'
-// import { AnyARecord } from 'dns'
+import { IInfo } from '../interfaces/Main.interface'
 
-// type IInfo = {
-//   open: boolean
-//   plot: string
-//   writer: string
-//   actors: string
-//   rating: string
-// }
-
-// interface IInfoArg {
-//   value: (previousValue: IInfo) => IInfo
-// }
+type IInfoArg = (previousValue: IInfo) => IInfo
 
 interface Props {
   plot: string
   actors: string
   rating: string
   writer: string
-  setInfo: (value: any) => void
+  setInfo: (cb: IInfoArg | IInfo) => void
 }
 
 const Modal = ({ plot, actors, rating, writer, setInfo }: Props) => {
@@ -38,7 +27,7 @@ const Modal = ({ plot, actors, rating, writer, setInfo }: Props) => {
             className="close_button"
             variant="contained"
             onClick={() => {
-              setInfo((previousValue: any) => ({
+              setInfo(previousValue => ({
                 ...previousValue,
                 open: false,
               }))
