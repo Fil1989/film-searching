@@ -2,16 +2,16 @@
 import Button from '@mui/material/Button'
 import likeThumb from '../assets/like.png'
 import dislikeThumb from '../assets/dislike.png'
-import { IInfo } from '../interfaces/Main.interface'
+import { IInfo } from '../interfaces/main.interface'
 
-type IInfoArg = (previousValue: IInfo) => IInfo
+type IInfoCb = (previousValue: IInfo) => IInfo
 
 interface Props {
   plot: string
   actors: string
   rating: string
   writer: string
-  setInfo: (cb: IInfoArg | IInfo) => void
+  setInfo: (cb: IInfoCb | IInfo) => void
 }
 
 const Modal = ({ plot, actors, rating, writer, setInfo }: Props) => {

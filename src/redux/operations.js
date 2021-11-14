@@ -1,13 +1,14 @@
 import axios from 'axios'
-import { logOutSuccess, logOutError } from './actions.js'
 import {
   addUserSuccess,
   addUserError,
   loginSuccess,
   loginError,
+  logOutSuccess,
+  logOutError,
   currentUserSuccess,
   currentUserError,
-} from './actions.js'
+} from './actions.ts'
 axios.defaults.baseURL = 'https://films-searcher.herokuapp.com/api/users'
 const authorizationController = {
   set(token) {

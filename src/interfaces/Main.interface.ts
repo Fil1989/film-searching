@@ -38,3 +38,10 @@ export interface IResults {
   type: string
   response: string
 }
+export interface IUser {
+  _id: string
+  email: string
+  password: string
+  name: string
+  __v: number
+}

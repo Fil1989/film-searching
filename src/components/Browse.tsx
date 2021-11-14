@@ -5,7 +5,7 @@ import FilmTemplate from './FilmTemplate.jsx'
 import amountControles from '../controles/amountControles.js'
 import SearchForm from './SearchForm.jsx'
 import { InView } from 'react-intersection-observer'
-import { IInfo, IResults } from '../interfaces/Main.interface'
+import { IInfo, IResults } from '../interfaces/main.interface'
 
 function Browse() {
   const [visible, setVisible] = useState<boolean>(false)

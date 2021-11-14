@@ -10,7 +10,7 @@ import {
   resetInputs,
   setIsRegistrationUrl,
   resetIsRegistrationUrl,
-} from '../redux/actions.js'
+} from '../redux/actions.ts'
 
 // interface Props {
 // onPostUserOperation: user => dispatch(postUserOperation(user)),

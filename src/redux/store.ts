@@ -7,7 +7,6 @@ import {
   isRegistrationUrl,
   token,
   name,
-  // isLoggenOn,
 } from './reducers'
 import {
   persistStore,
