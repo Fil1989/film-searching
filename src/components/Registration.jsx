@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { connect } from 'react-redux'
-import { postUserOperation } from '../redux/operations.js'
+import { postUserOperation } from '../redux/operations.ts'
 import {
   writeNameToState,
   writeEmailToState,

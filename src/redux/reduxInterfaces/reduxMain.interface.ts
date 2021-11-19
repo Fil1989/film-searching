@@ -11,7 +11,7 @@ export interface IState {
   films: IResults[]
 }
 
-export interface IAction {
-  type: string
-  payload?: any
-}
+// export interface IAction {
+//   type: string
+//   payload?: any
+// }

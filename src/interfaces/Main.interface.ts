@@ -17,8 +17,8 @@ export interface IResults {
   year: string
   rated: string
   released: string
-  season: string
-  episode: string
+  season?: string
+  episode?: string
   runtime: string
   genre: string
   director: string
@@ -34,7 +34,7 @@ export interface IResults {
   imdbrating: string
   imdbvotes: string
   imdbid: string
-  seriesid: string
+  seriesid?: string
   type: string
   response: string
 }
@@ -43,5 +43,15 @@ export interface IUser {
   email: string
   password: string
   name: string
+  token: string | null
   __v: number
+}
+export interface INewUser {
+  email: string
+  password: string
+  name: string
+}
+export interface ILoginUser {
+  email: string
+  password: string
 }

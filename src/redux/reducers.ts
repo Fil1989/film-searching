@@ -1,6 +1,35 @@
 // import { createReducer } from '@reduxjs/toolkit'
 
-import { IState, IAction } from './reduxInterfaces/reduxMain.interface'
+import { IState } from './reduxInterfaces/reduxMain.interface'
+import {
+  ADD_USER_SUCCESS,
+  ADD_USER_ERROR,
+  WRITE_NAME_TO_STATE,
+  WRITE_EMAIL_TO_STATE,
+  WRITE_PASSWORD_TO_STATE,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  LOGOUT_ERROR,
+  CURRENT_SUCCESS,
+  CURRENT_ERROR,
+  RESET_INPUTS,
+  LOGOUT_SUCCESS,
+  SEARCH_ACTION,
+  ISearch,
+  ILogOutSuccess,
+  IResetInputs,
+  ICurrentUserError,
+  ICurrentUserSuccess,
+  ILogOutError,
+  ILoginError,
+  ILoginSuccess,
+  IWriteEmailToState,
+  IWritePasswordToState,
+  IWriteNameToState,
+  IAddUserSuccess,
+  IAddUserError,
+  ISimple,
+} from './reduxInterfaces/reduxAction.interface'
 
 const initialState: IState = {
   nameInput: '',
@@ -13,6 +42,126 @@ const initialState: IState = {
   films: [],
 }
 
+export const registratedUsers = (
+  state = initialState.registratedUsers,
+  action: IAddUserSuccess | IAddUserError,
+) => {
+  switch (action.type) {
+    case ADD_USER_SUCCESS:
+      return [...state, action.payload]
+    case ADD_USER_ERROR:
+      return state
+    default:
+      return state
+  }
+}
+
+export const nameInput = (
+  state = initialState.nameInput,
+  action: IWriteNameToState | IResetInputs,
+) => {
+  switch (action.type) {
+    case WRITE_NAME_TO_STATE:
+      return action.payload.name
+    case RESET_INPUTS:
+      return ''
+    default:
+      return state
+  }
+}
+
+export const emailInput = (
+  state = initialState.emailInput,
+  action: IWriteEmailToState | IResetInputs,
+) => {
+  switch (action.type) {
+    case WRITE_EMAIL_TO_STATE:
+      return action.payload.email
+    case RESET_INPUTS:
+      return ''
+    default:
+      return state
+  }
+}
+export const passwordInput = (
+  state = initialState.passwordInput,
+  action: IWritePasswordToState | IResetInputs,
+) => {
+  switch (action.type) {
+    case WRITE_PASSWORD_TO_STATE:
+      return action.payload.password
+    case RESET_INPUTS:
+      return ''
+    default:
+      return state
+  }
+}
+
+export const isRegistrationUrl = (
+  state = initialState.isRegistrationUrl,
+  action: ISimple,
+) => {
+  switch (action.type) {
+    case 'State/SetIsRegistrationUrl':
+      return true
+    case 'State/ResetIsRegistrationUrl':
+      return false
+    default:
+      return state
+  }
+}
+export const name = (
+  state = initialState.name,
+  action: ILoginSuccess | ICurrentUserSuccess | ILoginError | ILogOutSuccess,
+) => {
+  switch (action.type) {
+    case LOGIN_SUCCESS:
+      return action.payload.name
+    case LOGIN_ERROR:
+      return ''
+    case LOGOUT_SUCCESS:
+      return ''
+    case CURRENT_SUCCESS:
+      return action.payload.name
+    default:
+      return state
+  }
+}
+export const token = (
+  state = initialState.token,
+  action:
+    | ILogOutSuccess
+    | ICurrentUserError
+    | ICurrentUserSuccess
+    | ILogOutError
+    | ILoginError
+    | ILoginSuccess,
+) => {
+  switch (action.type) {
+    case LOGIN_SUCCESS:
+      return action.payload.token
+    case LOGIN_ERROR:
+      return null
+    case LOGOUT_SUCCESS:
+      return null
+    case LOGOUT_ERROR:
+      return state
+    case CURRENT_SUCCESS:
+      return action.payload.token
+    case CURRENT_ERROR:
+      return null
+    default:
+      return state
+  }
+}
+export const films = (state = initialState.films, action: ISearch) => {
+  switch (action.type) {
+    case SEARCH_ACTION:
+      return action.payload
+    default:
+      return state
+  }
+}
 // export const registratedUsers = createReducer(initialState.registratedUsers, {
 //   'Server/AddUserSuccess': (state, action) => [...state, action.payload],
 //   'Server/AddUserError': (state, action) => {
@@ -75,107 +224,3 @@ const initialState: IState = {
 // export const films = createReducer(initialState.films, {
 //   'State/Search': (state, action) => action.payload,
 // })
-
-export const registratedUsers = (
-  state = initialState.registratedUsers,
-  action: IAction,
-) => {
-  switch (action.type) {
-    case 'Server/AddUserSuccess':
-      return [...state, action.payload]
-    case 'Server/AddUserError':
-      return state
-    default:
-      return state
-  }
-}
-export const emailInput = (
-  state = initialState.emailInput,
-  action: IAction,
-) => {
-  switch (action.type) {
-    case 'State/WriteEmailToState':
-      return action.payload.email
-    case 'State/ResetInputs':
-      return ''
-    default:
-      return state
-  }
-}
-export const passwordInput = (
-  state = initialState.passwordInput,
-  action: IAction,
-) => {
-  switch (action.type) {
-    case 'State/WritePasswordToState':
-      return action.payload.password
-    case 'State/ResetInputs':
-      return ''
-    default:
-      return state
-  }
-}
-export const nameInput = (state = initialState.nameInput, action: IAction) => {
-  switch (action.type) {
-    case 'State/WriteNameToState':
-      return action.payload.name
-    case 'State/ResetInputs':
-      return ''
-    default:
-      return state
-  }
-}
-export const isRegistrationUrl = (
-  state = initialState.isRegistrationUrl,
-  action: IAction,
-) => {
-  switch (action.type) {
-    case 'State/SetIsRegistrationUrl':
-      return true
-    case 'State/ResetIsRegistrationUrl':
-      return false
-    default:
-      return state
-  }
-}
-export const name = (state = initialState.name, action: IAction) => {
-  switch (action.type) {
-    case 'Server/LoginSuccess':
-      return action.payload.name
-    case 'Server/LoginError':
-      return ''
-    case 'Server/LogOutSuccess':
-      return ''
-    case 'Server/CurrentUserSuccess':
-      return action.payload.name
-    default:
-      return state
-  }
-}
-export const token = (state = initialState.token, action: IAction) => {
-  switch (action.type) {
-    case 'Server/LoginSuccess':
-      return action.payload.token
-    case 'Server/LoginError':
-      return null
-    case 'Server/LogOutSuccess':
-      return null
-    case 'Server/LogOutError':
-      return state
-    case 'Server/CurrentUserSuccess':
-      return action.payload.token
-
-    case 'Server/CurrentUserError':
-      return null
-    default:
-      return state
-  }
-}
-export const films = (state = initialState.films, action: IAction) => {
-  switch (action.type) {
-    case 'State/Search':
-      return action.payload
-    default:
-      return state
-  }
-}

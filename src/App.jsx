@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import { useSelector, useDispatch } from 'react-redux'
-import Routs from './components/Routs.jsx'
+import Routs from './components/Routs.tsx'
 import logo from './assets/film-searcher.jpg'
 import './App.scss'
-import { logOut, currentUser } from './redux/operations.js'
+import { logOut, currentUser } from './redux/operations.ts'
 // import { tokenNull } from './redux/actions.js'
 
 function App() {

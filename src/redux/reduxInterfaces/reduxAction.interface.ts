@@ -11,7 +11,18 @@ export const LOGOUT_ERROR = 'Server/LogOutError'
 export const CURRENT_SUCCESS = 'Server/CurrentUserSuccess'
 export const CURRENT_ERROR = 'Server/CurrentUserError'
 export const SEARCH_ACTION = 'State/Search'
+export const RESET_INPUTS = 'State/ResetInputs'
+export const LOGOUT_SUCCESS = 'Server/LogOutSuccess'
 
+export interface IResetInputs {
+  type: typeof RESET_INPUTS
+}
+export interface ISimple {
+  type: string
+}
+export interface ILogOutSuccess {
+  type: typeof LOGOUT_SUCCESS
+}
 export interface IAddUserSuccess {
   type: typeof ADD_USER_SUCCESS
   payload: IUser

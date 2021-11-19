@@ -12,6 +12,12 @@ import {
   LOGOUT_ERROR,
   CURRENT_SUCCESS,
   CURRENT_ERROR,
+  RESET_INPUTS,
+  SEARCH_ACTION,
+  LOGOUT_SUCCESS,
+  ILogOutSuccess,
+  ISearch,
+  IResetInputs,
   ICurrentUserError,
   ICurrentUserSuccess,
   ILogOutError,
@@ -22,6 +28,7 @@ import {
   IWriteNameToState,
   IAddUserSuccess,
   IAddUserError,
+  ISimple,
 } from './reduxInterfaces/reduxAction.interface'
 
 // export const addUserSuccess = createAction('Server/AddUserSuccess')
@@ -66,15 +73,15 @@ export const writePasswordToState = (
 //     payload: { password: e.target.value },
 //   }),
 // )
-export const resetInputs = (): { type: string } => ({
-  type: 'State/ResetInputs',
+export const resetInputs = (): IResetInputs => ({
+  type: RESET_INPUTS,
 })
 // export const resetInputs = createAction('State/ResetInputs')
-export const setIsRegistrationUrl = (): { type: string } => ({
+export const setIsRegistrationUrl = (): ISimple => ({
   type: 'State/SetIsRegistrationUrl',
 })
 // export const setIsRegistrationUrl = createAction('State/SetIsRegistrationUrl')
-export const resetIsRegistrationUrl = (): { type: string } => ({
+export const resetIsRegistrationUrl = (): ISimple => ({
   type: 'State/ResetIsRegistrationUrl',
 })
 // export const resetIsRegistrationUrl = createAction(
@@ -90,8 +97,8 @@ export const loginError = (error: string): ILoginError => ({
   payload: error,
 })
 // export const loginError = createAction('Server/LoginError')
-export const logOutSuccess = (): { type: string } => ({
-  type: 'Server/LogOutSuccess',
+export const logOutSuccess = (): ILogOutSuccess => ({
+  type: LOGOUT_SUCCESS,
 })
 // export const logOutSuccess = createAction('Server/LogOutSuccess')
 
@@ -117,8 +124,8 @@ export const currentUserError = (error: string): ICurrentUserError => ({
   payload: error,
 })
 // export const currentUserError = createAction('Server/CurrentUserError')
-export const searchAction = (query: string) => ({
-  type: 'State/Search',
+export const searchAction = (query: string): ISearch => ({
+  type: SEARCH_ACTION,
   payload: allFilms.filter(film => film.title.includes(query)),
 })
 // export const searchAction = createAction('State/Search', query => {

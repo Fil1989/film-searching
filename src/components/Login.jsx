@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import { connect } from 'react-redux'
-import { loginUser } from '../redux/operations.js'
+import { loginUser } from '../redux/operations.ts'
 
 class Login extends Component {
   state = {
