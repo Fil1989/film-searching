@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button'
 import Modal from './Modal'
-import FilmTemplate from './FilmTemplate.jsx'
+import FilmTemplate from './FilmTemplate'
 import amountControles from '../controles/amountControles.js'
-import SearchForm from './SearchForm.jsx'
+import SearchForm from './SearchForm'
 import { InView } from 'react-intersection-observer'
 import { IInfo, IResults } from '../interfaces/main.interface'
 

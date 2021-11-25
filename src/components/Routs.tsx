@@ -4,7 +4,7 @@ import Registration from './Registration.jsx'
 import { useSelector } from 'react-redux'
 
 import HomePage from './HomePage'
-import Login from './Login.jsx'
+import Login from './Login'
 import Browse from './Browse'
 import WrongWay from './WrongWay'
 import { IState } from '../redux/reduxInterfaces/reduxMain.interface'

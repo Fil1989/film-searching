@@ -2,11 +2,9 @@
 import Button from '@mui/material/Button'
 import likeThumb from '../assets/like.png'
 import dislikeThumb from '../assets/dislike.png'
-import { IInfo } from '../interfaces/main.interface'
+import { IInfo, IInfoCb } from '../interfaces/main.interface'
 
-type IInfoCb = (previousValue: IInfo) => IInfo
-
-interface Props {
+interface IProps {
   plot: string
   actors: string
   rating: string
@@ -14,7 +12,7 @@ interface Props {
   setInfo: (cb: IInfoCb | IInfo) => void
 }
 
-const Modal = ({ plot, actors, rating, writer, setInfo }: Props) => {
+const Modal = ({ plot, actors, rating, writer, setInfo }: IProps) => {
   //   const [thumb, setThumb] = useState(null)
 
   return (

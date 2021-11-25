@@ -52,6 +52,7 @@ export interface INewUser {
   name: string
 }
 export interface ILoginUser {
-  email: string
-  password: string
+  email: string | null
+  password: string | null
 }
+export type IInfoCb = (previousValue: IInfo) => IInfo

@@ -3,8 +3,15 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import films from '../data/imdb.json'
 import amountControles from '../controles/amountControles.js'
-const SearchForm = ({ setResults, setVisible }) => {
-  const [search, setSearch] = useState('')
+import { IResults } from '../interfaces/main.interface'
+
+interface IProps {
+  setResults: (films: IResults[]) => void
+  setVisible: (value: boolean) => void
+}
+
+const SearchForm = ({ setResults, setVisible }: IProps) => {
+  const [search, setSearch] = useState<string>('')
 
   return (
     <form
@@ -15,6 +22,7 @@ const SearchForm = ({ setResults, setVisible }) => {
         const resultsOfSearch = films.filter(
           film =>
             film.title &&
+            e.currentTarget[0].attributes[4].nodeValue &&
             film.title
               .toLowerCase()
               .includes(

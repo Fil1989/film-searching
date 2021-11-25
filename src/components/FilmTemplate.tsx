@@ -1,9 +1,15 @@
 import info from '../assets/Information_icon.svg.png'
 import { useSelector } from 'react-redux'
+import { IInfo, IResults, IInfoCb } from '../interfaces/main.interface'
+import { IState } from '../redux/reduxInterfaces/reduxMain.interface'
 
-function FilmTemplate({ searchResults, setInfo }) {
-  console.log(searchResults)
-  const token = useSelector(state => state.token)
+interface IProps {
+  searchResults: IResults[]
+  setInfo: (cb: IInfoCb | IInfo) => void
+}
+
+function FilmTemplate({ searchResults, setInfo }: IProps) {
+  const token = useSelector((state: IState) => state.token)
 
   return (
     <>

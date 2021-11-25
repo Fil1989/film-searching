@@ -1,25 +1,33 @@
 import React, { Component } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import { connect } from 'react-redux'
-import { loginUser } from '../redux/operations.ts'
+import { connect, ConnectedProps } from 'react-redux'
+import { loginUser } from '../redux/operations'
+import { ILoginUser } from '../interfaces/main.interface'
 
-class Login extends Component {
+interface ILocalState {
+  email: string
+  password: string
+}
+
+class Login extends Component<PropsFromRedux, ILocalState> {
   state = {
     email: '',
     password: '',
   }
 
-  handleChange = e => {
+  handleChange = (e: { target: { value: string; name: string } }) => {
     this.setState(currentState => ({
       ...currentState,
       [e.target.name]: e.target.value,
     }))
   }
-  handleSubmit(e) {
+  handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const user = {
+    const user: ILoginUser = {
+      // @ts-ignore
       email: e.currentTarget[0].attributes.value.nodeValue,
+      // @ts-ignore
       password: e.currentTarget[1].attributes.value.nodeValue,
     }
     this.props.onLoginUser(user)
@@ -47,7 +55,6 @@ class Login extends Component {
             value={email}
             onChange={this.handleChange}
             label="Email"
-            // type="email"
             inputProps={{
               pattern:
                 "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9]*[a-z0-9])?",
@@ -80,16 +87,11 @@ class Login extends Component {
     )
   }
 }
-const mapStateToProps = state => {
-  return {
-    name: state.name,
-    email: state.email,
-    password: state.password,
-  }
+const mapDispatch = {
+  onLoginUser: (user: ILoginUser) => loginUser(user),
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    onLoginUser: user => dispatch(loginUser(user)),
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+const connector = connect(null, mapDispatch)
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connector(Login)
