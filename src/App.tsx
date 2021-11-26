@@ -2,14 +2,15 @@ import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import { useSelector, useDispatch } from 'react-redux'
-import Routs from './components/Routs.tsx'
+import Routs from './components/Routs'
 import logo from './assets/film-searcher.jpg'
 import './App.scss'
-import { logOut, currentUser } from './redux/operations.ts'
+import { logOut, currentUser } from './redux/operations'
+import { IState } from './redux/reduxInterfaces/reduxMain.interface'
 // import { tokenNull } from './redux/actions.js'
 
 function App() {
-  const stateValues = useSelector(state => ({
+  const stateValues = useSelector((state: IState) => ({
     name: state.nameInput,
     email: state.emailInput,
     password: state.passwordInput,
@@ -17,6 +18,7 @@ function App() {
     token: state.token,
     userName: state.name,
   }))
+  const dispatch = useDispatch()
   useEffect(() => {
     if (stateValues.token !== null) {
       dispatch(currentUser())
@@ -24,7 +26,6 @@ function App() {
     // dispatch(tokenNull())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  const dispatch = useDispatch()
   return (
     <>
       <header>

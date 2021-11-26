@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import Registration from './Registration.jsx'
+import Registration from './Registration'
 import { useSelector } from 'react-redux'
 
 import HomePage from './HomePage'

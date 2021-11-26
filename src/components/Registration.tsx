@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
-import { connect } from 'react-redux'
-import { postUserOperation } from '../redux/operations.ts'
+import { connect, ConnectedProps } from 'react-redux'
+import { postUserOperation } from '../redux/operations'
 import {
   writeNameToState,
   writeEmailToState,
@@ -10,31 +10,26 @@ import {
   resetInputs,
   setIsRegistrationUrl,
   resetIsRegistrationUrl,
-} from '../redux/actions.ts'
+} from '../redux/actions'
+import { IState } from '../redux/reduxInterfaces/reduxMain.interface'
+import { INewUser } from '../interfaces/main.interface'
 
-// interface Props {
-// onPostUserOperation: user => dispatch(postUserOperation(user)),
-//     onWriteNameToState: e => dispatch(writeNameToState(e)),
-//     onWriteEmailToState: e => dispatch(writeEmailToState(e)),
-//     onWritePasswordToState: e => dispatch(writePasswordToState(e)),
-//     onResetInputs: () => dispatch(resetInputs()),
-//     onSetIsRegistrationUrl: () => dispatch(setIsRegistrationUrl()),
-//     onResetIsRegistrationUrl: () => dispatch(resetIsRegistrationUrl()),
-// }
-
-class Registration extends Component /*<Props>*/ {
+class Registration extends Component<PropsFromRedux> {
   componentDidMount() {
     this.props.onSetIsRegistrationUrl()
   }
   componentWillUnmount() {
     this.props.onResetIsRegistrationUrl()
   }
-  handleSubmit(e /*: React.FormEvent<HTMLFormElement>*/) {
+  handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
     const newUser = {
+      // @ts-ignore
       name: e.currentTarget[0].attributes.value.nodeValue,
+      // @ts-ignore
       email: e.currentTarget[1].attributes.value.nodeValue,
+      // @ts-ignore
       password: e.currentTarget[2].attributes.value.nodeValue,
     }
 
@@ -56,7 +51,7 @@ class Registration extends Component /*<Props>*/ {
               marginBottom: '20px',
             }}
             value={this.props.name}
-            onChange={e => this.props.onWriteNameToState(e)}
+            onChange={this.props.onWriteNameToState}
             label="Name"
             variant="filled"
             type="text"
@@ -71,7 +66,7 @@ class Registration extends Component /*<Props>*/ {
               marginBottom: '20px',
             }}
             value={this.props.email}
-            onChange={e => this.props.onWriteEmailToState(e)}
+            onChange={this.props.onWriteEmailToState}
             label="Email"
             // type="email"
             inputProps={{
@@ -87,7 +82,7 @@ class Registration extends Component /*<Props>*/ {
               marginBottom: '20px',
             }}
             value={this.props.password}
-            onChange={e => this.props.onWritePasswordToState(e)}
+            onChange={this.props.onWritePasswordToState}
             label="Password"
             type="password"
             variant="filled"
@@ -106,22 +101,28 @@ class Registration extends Component /*<Props>*/ {
     )
   }
 }
-const mapStateToProps = state => {
+const mapState = (state: IState) => {
   return {
     name: state.nameInput,
     email: state.emailInput,
     password: state.passwordInput,
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    onPostUserOperation: user => dispatch(postUserOperation(user)),
-    onWriteNameToState: e => dispatch(writeNameToState(e)),
-    onWriteEmailToState: e => dispatch(writeEmailToState(e)),
-    onWritePasswordToState: e => dispatch(writePasswordToState(e)),
-    onResetInputs: () => dispatch(resetInputs()),
-    onSetIsRegistrationUrl: () => dispatch(setIsRegistrationUrl()),
-    onResetIsRegistrationUrl: () => dispatch(resetIsRegistrationUrl()),
-  }
+const mapDispatch = {
+  onPostUserOperation: (user: INewUser) => postUserOperation(user),
+  onWriteNameToState: (e: React.ChangeEvent<HTMLInputElement>) =>
+    writeNameToState(e),
+  onWriteEmailToState: (e: React.ChangeEvent<HTMLInputElement>) =>
+    writeEmailToState(e),
+  onWritePasswordToState: (e: React.ChangeEvent<HTMLInputElement>) =>
+    writePasswordToState(e),
+  onResetInputs: () => resetInputs(),
+  onSetIsRegistrationUrl: () => setIsRegistrationUrl(),
+  onResetIsRegistrationUrl: () => resetIsRegistrationUrl(),
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Registration)
+
+const connector = connect(mapState, mapDispatch)
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+export default connector(Registration)
