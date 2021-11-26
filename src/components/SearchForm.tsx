@@ -2,7 +2,7 @@ import { useState } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import films from '../data/imdb.json'
-import amountControles from '../controles/amountControles.js'
+import amountControles from '../controles/amountControles'
 import { IResults } from '../interfaces/main.interface'
 
 interface IProps {

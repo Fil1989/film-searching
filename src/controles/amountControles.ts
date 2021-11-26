@@ -1,4 +1,16 @@
-const amountControles = {
+import { IResults } from '../interfaces/main.interface'
+
+interface IAmount {
+  allSearchResults: IResults[]
+  perPage: number
+  page: number
+  incrementPage: () => void
+  resetPage: () => void
+  setAllResults: IResults[]
+  getResults: IResults[]
+}
+
+const amountControles: IAmount = {
   allSearchResults: [],
   perPage: 20,
   page: 1,
@@ -9,7 +21,7 @@ const amountControles = {
     this.page = 1
   },
 
-  set setAllResults(results) {
+  set setAllResults(results: IResults[]) {
     this.allSearchResults = results
   },
   get getResults() {
