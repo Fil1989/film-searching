@@ -31,13 +31,11 @@ import {
   ISimple,
 } from './reduxInterfaces/reduxAction.interface'
 
-// export const addUserSuccess = createAction('Server/AddUserSuccess')
 export const addUserSuccess = (user: IUser): IAddUserSuccess => ({
   type: ADD_USER_SUCCESS,
   payload: user,
 })
 
-// export const addUserError = createAction('Server/AddUserError')
 export const addUserError = (error: string): IAddUserError => ({
   type: ADD_USER_ERROR,
   payload: error,
@@ -61,6 +59,53 @@ export const writePasswordToState = (
   payload: { password: e.target.value },
 })
 
+export const resetInputs = (): IResetInputs => ({
+  type: RESET_INPUTS,
+})
+export const setIsRegistrationUrl = (): ISimple => ({
+  type: 'State/SetIsRegistrationUrl',
+})
+export const resetIsRegistrationUrl = (): ISimple => ({
+  type: 'State/ResetIsRegistrationUrl',
+})
+
+export const loginSuccess = (user: IUser): ILoginSuccess => ({
+  type: LOGIN_SUCCESS,
+  payload: user,
+})
+export const loginError = (error: string): ILoginError => ({
+  type: LOGIN_ERROR,
+  payload: error,
+})
+export const logOutSuccess = (): ILogOutSuccess => ({
+  type: LOGOUT_SUCCESS,
+})
+
+export const logOutError = (error: string): ILogOutError => ({
+  type: LOGOUT_ERROR,
+  payload: error,
+})
+export const currentUserSuccess = (
+  token: string,
+  name: string,
+): ICurrentUserSuccess => ({
+  type: CURRENT_SUCCESS,
+  payload: { token, name },
+})
+
+export const currentUserError = (error: string): ICurrentUserError => ({
+  type: CURRENT_ERROR,
+  payload: error,
+})
+export const searchAction = (query: string): ISearch => ({
+  type: SEARCH_ACTION,
+  payload: allFilms.filter(film => film.title.includes(query)),
+})
+
+// export const addUserSuccess = createAction('Server/AddUserSuccess')
+
+// export const addUserError = createAction('Server/AddUserError')
+
 // export const writeNameToState = createAction('State/WriteNameToState', e => ({
 //   payload: { name: e.target.value },
 // }))
@@ -73,61 +118,28 @@ export const writePasswordToState = (
 //     payload: { password: e.target.value },
 //   }),
 // )
-export const resetInputs = (): IResetInputs => ({
-  type: RESET_INPUTS,
-})
 // export const resetInputs = createAction('State/ResetInputs')
-export const setIsRegistrationUrl = (): ISimple => ({
-  type: 'State/SetIsRegistrationUrl',
-})
+
 // export const setIsRegistrationUrl = createAction('State/SetIsRegistrationUrl')
-export const resetIsRegistrationUrl = (): ISimple => ({
-  type: 'State/ResetIsRegistrationUrl',
-})
+
 // export const resetIsRegistrationUrl = createAction(
 //   'State/ResetIsRegistrationUrl',
 // )
-export const loginSuccess = (user: IUser): ILoginSuccess => ({
-  type: LOGIN_SUCCESS,
-  payload: user,
-})
 // export const loginSuccess = createAction('Server/LoginSuccess')
-export const loginError = (error: string): ILoginError => ({
-  type: LOGIN_ERROR,
-  payload: error,
-})
+
 // export const loginError = createAction('Server/LoginError')
-export const logOutSuccess = (): ILogOutSuccess => ({
-  type: LOGOUT_SUCCESS,
-})
+
 // export const logOutSuccess = createAction('Server/LogOutSuccess')
 
-export const logOutError = (error: string): ILogOutError => ({
-  type: LOGOUT_ERROR,
-  payload: error,
-}) // export const logOutError = createAction('Server/LogOutError')
-export const currentUserSuccess = (
-  token: string,
-  name: string,
-): ICurrentUserSuccess => ({
-  type: CURRENT_SUCCESS,
-  payload: { token, name },
-})
+// export const logOutError = createAction('Server/LogOutError')
 // export const currentUserSuccess = createAction(
 //   'Server/CurrentUserSuccess',
 //   (token, name) => {
 //     return { payload: { token, name } }
 //   },
 // )
-export const currentUserError = (error: string): ICurrentUserError => ({
-  type: CURRENT_ERROR,
-  payload: error,
-})
 // export const currentUserError = createAction('Server/CurrentUserError')
-export const searchAction = (query: string): ISearch => ({
-  type: SEARCH_ACTION,
-  payload: allFilms.filter(film => film.title.includes(query)),
-})
+
 // export const searchAction = createAction('State/Search', query => {
 //   return { payload: allFilms.filter(film => film.title.includes(query)) }
 // })
