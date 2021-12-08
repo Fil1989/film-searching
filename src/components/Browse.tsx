@@ -16,7 +16,6 @@ function Browse() {
     actors: '',
     rating: '',
   })
-  // type iteralResults = never[] | IResults[]
   let [results, setResults] = useState<IResults[]>([])
 
   useEffect(() => {

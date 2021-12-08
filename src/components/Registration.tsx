@@ -25,12 +25,9 @@ class Registration extends Component<PropsFromRedux> {
     e.preventDefault()
 
     const newUser = {
-      // @ts-ignore
-      name: e.currentTarget[0].attributes.value.nodeValue,
-      // @ts-ignore
-      email: e.currentTarget[1].attributes.value.nodeValue,
-      // @ts-ignore
-      password: e.currentTarget[2].attributes.value.nodeValue,
+      name: this.props.name,
+      email: this.props.email,
+      password: this.props.password,
     }
 
     this.props.onPostUserOperation(newUser)

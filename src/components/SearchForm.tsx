@@ -9,6 +9,7 @@ interface IProps {
   setResults: (films: IResults[]) => void
   setVisible: (value: boolean) => void
 }
+export const value: string = '777'
 
 const SearchForm = ({ setResults, setVisible }: IProps) => {
   const [search, setSearch] = useState<string>('')
@@ -22,12 +23,8 @@ const SearchForm = ({ setResults, setVisible }: IProps) => {
         const resultsOfSearch = films.filter(
           film =>
             film.title &&
-            e.currentTarget[0].attributes[4].nodeValue &&
-            film.title
-              .toLowerCase()
-              .includes(
-                e.currentTarget[0].attributes[4].nodeValue.toLowerCase(),
-              ),
+            search &&
+            film.title.toLowerCase().includes(search.toLowerCase()),
         )
         amountControles.setAllResults = resultsOfSearch
         setResults(amountControles.getResults)
@@ -54,7 +51,9 @@ const SearchForm = ({ setResults, setVisible }: IProps) => {
       <Button type="submit" variant="contained">
         Search
       </Button>
+      <p data-testid="value">{value}</p>
     </form>
   )
 }
 export default SearchForm
+export const sum = (a: number, b: number): number => a + b

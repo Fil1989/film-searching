@@ -24,12 +24,7 @@ class Login extends Component<PropsFromRedux, ILocalState> {
   }
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const user: ILoginUser = {
-      // @ts-ignore
-      email: e.currentTarget[0].attributes.value.nodeValue,
-      // @ts-ignore
-      password: e.currentTarget[1].attributes.value.nodeValue,
-    }
+    const user: ILoginUser = this.state
     this.props.onLoginUser(user)
     this.setState(currentState => ({
       ...currentState,
