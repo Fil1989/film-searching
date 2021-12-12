@@ -9,7 +9,7 @@ interface IProps {
   setResults: (films: IResults[]) => void
   setVisible: (value: boolean) => void
 }
-export const value: string = '777'
+export const value: string = '778'
 
 const SearchForm = ({ setResults, setVisible }: IProps) => {
   const [search, setSearch] = useState<string>('')
@@ -28,9 +28,9 @@ const SearchForm = ({ setResults, setVisible }: IProps) => {
         )
         amountControles.setAllResults = resultsOfSearch
         setResults(amountControles.getResults)
-        setTimeout(() => {
-          setVisible(true)
-        }, 500)
+        // setTimeout(() => {
+        setVisible(true)
+        // }, 500)
       }}
     >
       <TextField
@@ -39,7 +39,6 @@ const SearchForm = ({ setResults, setVisible }: IProps) => {
         }}
         value={search}
         onChange={e => {
-          e.preventDefault()
           setSearch(e.target.value)
         }}
         label="Search"
@@ -47,8 +46,9 @@ const SearchForm = ({ setResults, setVisible }: IProps) => {
         variant="outlined"
         name="search"
         className="search_input"
+        inputProps={{ 'data-testid': 'search_field' }}
       />
-      <Button type="submit" variant="contained">
+      <Button type="submit" variant="contained" data-testid="searching_btn">
         Search
       </Button>
       <p data-testid="value">{value}</p>
@@ -56,4 +56,4 @@ const SearchForm = ({ setResults, setVisible }: IProps) => {
   )
 }
 export default SearchForm
-export const sum = (a: number, b: number): number => a + b
+// export const sum = (a: number = 0, b: number = 0): number => a + b

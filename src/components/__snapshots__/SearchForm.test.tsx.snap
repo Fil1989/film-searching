@@ -20,6 +20,7 @@ exports[`SearchForm snapshot test 1`] = `
         <input
           aria-invalid="false"
           class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+          data-testid="search_field"
           name="search"
           type="text"
           value=""
@@ -40,6 +41,7 @@ exports[`SearchForm snapshot test 1`] = `
     </div>
     <button
       class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-sghohy-MuiButtonBase-root-MuiButton-root"
+      data-testid="searching_btn"
       tabindex="0"
       type="submit"
     >
@@ -51,7 +53,7 @@ exports[`SearchForm snapshot test 1`] = `
     <p
       data-testid="value"
     >
-      777
+      778
     </p>
   </form>
 </div>
