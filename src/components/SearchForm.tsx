@@ -9,8 +9,6 @@ interface IProps {
   setResults: (films: IResults[]) => void
   setVisible: (value: boolean) => void
 }
-export const value: string = '778'
-
 const SearchForm = ({ setResults, setVisible }: IProps) => {
   const [search, setSearch] = useState<string>('')
 
@@ -51,7 +49,6 @@ const SearchForm = ({ setResults, setVisible }: IProps) => {
       <Button type="submit" variant="contained" data-testid="searching_btn">
         Search
       </Button>
-      <p data-testid="value">{value}</p>
     </form>
   )
 }

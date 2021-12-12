@@ -1,7 +1,5 @@
 import { render, fireEvent } from '@testing-library/react'
 import SearchForm /*, { sum }*/ from './SearchForm'
-// import WrongWay from './WrongWay.tsx'
-// import  from './SearchForm.tsx'
 
 // describe('sum', () => {
 //   it('2+2', () => {
@@ -25,12 +23,7 @@ describe('SearchForm', () => {
     )
     expect(container).toMatchSnapshot()
   })
-  it('getByTestId test', () => {
-    const { getByTestId } = render(
-      <SearchForm setResults={() => {}} setVisible={() => {}} />,
-    )
-    expect(getByTestId('value').textContent).toBe('778')
-  })
+
   it('search initializing test', () => {
     const Searching = jest.fn()
     const { getByTestId } = render(

@@ -50,11 +50,6 @@ exports[`SearchForm snapshot test 1`] = `
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
-    <p
-      data-testid="value"
-    >
-      778
-    </p>
   </form>
 </div>
 `;
