@@ -2,16 +2,20 @@ import films from '../data/imdb.json'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 const Carousel = require('react-responsive-carousel').Carousel
-
-function HomePage() {
-  const plotSizing = (title: string, plot: string) =>
-    (title + plot).length < 51
+export const plotSizing = (title: string = '', plot: string = '') => {
+  if (title.length < 50) {
+    return (title + plot).length < 51
       ? plot
       : plot
           .split('')
           .slice(0, 50 - title.length)
           .join('') + '...'
+  } else {
+    return 'title can not be loger then 50 symbols'
+  }
+}
 
+function HomePage() {
   return (
     <div aria-label="Main films">
       <Carousel

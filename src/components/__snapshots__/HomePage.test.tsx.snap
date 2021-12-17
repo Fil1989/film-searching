@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage component test Snapshot test 1`] = `
+<div>
+  <div
+    aria-label="Main films"
+  >
+    <div
+      class="carousel-root carousell"
+    >
+      <div
+        class="carousel carousel-slider"
+        style="width: 100%;"
+      >
+        <ul
+          class="control-dots"
+        >
+          <li
+            aria-label="slide item 1"
+            class="dot selected"
+            role="button"
+            tabindex="0"
+            value="0"
+          />
+          <li
+            aria-label="slide item 2"
+            class="dot"
+            role="button"
+            tabindex="0"
+            value="1"
+          />
+          <li
+            aria-label="slide item 3"
+            class="dot"
+            role="button"
+            tabindex="0"
+            value="2"
+          />
+        </ul>
+        <button
+          aria-label="previous slide / item"
+          class="control-arrow control-prev"
+          type="button"
+        />
+        <div
+          class="slider-wrapper axis-horizontal"
+        >
+          <ul
+            class="slider animated"
+            style="transform: translate3d(-100%,0,0); transition-duration: 350ms;"
+          >
+            <li
+              class="slide"
+            >
+              <div
+                class="slider_element"
+              >
+                <img
+                  alt="The Winds of Winter"
+                  class="moovie_poster"
+                  src="https://m.media-amazon.com/images/M/MV5BMTc0ZjQ5ODctYzRmNC00ZjQ3LWFlZDctN2NjNjY1MTliMjU3L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjkxMjM5Nzc@._V1_SX300.jpg"
+                />
+                <div
+                  aria-label="Description of the moovie"
+                  class="slider_element_text"
+                >
+                  <h3>
+                    The Winds of Winter
+                  </h3>
+                  <p>
+                    Cersei and Loras Tyrell stand t...
+                  </p>
+                </div>
+                 
+              </div>
+            </li>
+            <li
+              class="slide selected previous"
+            >
+              <div
+                class="slider_element"
+              >
+                <img
+                  alt="Ozymandias"
+                  class="moovie_poster"
+                  src="https://m.media-amazon.com/images/M/MV5BMTU1MjEwNjQ4MF5BMl5BanBnXkFtZTgwNzI2MTU5NTM@._V1_SX300.jpg"
+                />
+                <div
+                  aria-label="Description of the moovie"
+                  class="slider_element_text"
+                >
+                  <h3>
+                    Ozymandias
+                  </h3>
+                  <p>
+                    Walt goes on the run. Jesse is taken hos...
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li
+              class="slide"
+            >
+              <div
+                class="slider_element"
+              >
+                <img
+                  alt="Battle of the Bastards"
+                  class="moovie_poster"
+                  src="https://m.media-amazon.com/images/M/MV5BZDFiZTNiMmItMDk5ZC00OGZmLTk3NmItODM5ZWE2YWMzZjliXkEyXkFqcGdeQXVyOTMyOTQyNzA@._V1_SX300.jpg"
+                />
+                <div
+                  aria-label="Description of the moovie"
+                  class="slider_element_text"
+                >
+                  <h3>
+                    Battle of the Bastards
+                  </h3>
+                  <p>
+                    Jon and Sansa face Ramsay Bo...
+                  </p>
+                </div>
+                 
+              </div>
+            </li>
+            <li
+              class="slide"
+            >
+              <div
+                class="slider_element"
+              >
+                <img
+                  alt="The Winds of Winter"
+                  class="moovie_poster"
+                  src="https://m.media-amazon.com/images/M/MV5BMTc0ZjQ5ODctYzRmNC00ZjQ3LWFlZDctN2NjNjY1MTliMjU3L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjkxMjM5Nzc@._V1_SX300.jpg"
+                />
+                <div
+                  aria-label="Description of the moovie"
+                  class="slider_element_text"
+                >
+                  <h3>
+                    The Winds of Winter
+                  </h3>
+                  <p>
+                    Cersei and Loras Tyrell stand t...
+                  </p>
+                </div>
+                 
+              </div>
+            </li>
+            <li
+              class="slide selected previous"
+            >
+              <div
+                class="slider_element"
+              >
+                <img
+                  alt="Ozymandias"
+                  class="moovie_poster"
+                  src="https://m.media-amazon.com/images/M/MV5BMTU1MjEwNjQ4MF5BMl5BanBnXkFtZTgwNzI2MTU5NTM@._V1_SX300.jpg"
+                />
+                <div
+                  aria-label="Description of the moovie"
+                  class="slider_element_text"
+                >
+                  <h3>
+                    Ozymandias
+                  </h3>
+                  <p>
+                    Walt goes on the run. Jesse is taken hos...
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <button
+          aria-label="next slide / item"
+          class="control-arrow control-next"
+          type="button"
+        />
+        <p
+          class="carousel-status"
+        >
+          1 of 3
+        </p>
+      </div>
+      <div
+        class="carousel"
+      >
+        <div
+          class="thumbs-wrapper axis-vertical"
+        >
+          <button
+            aria-label="previous slide / item"
+            class="control-arrow control-prev control-disabled"
+            type="button"
+          />
+          <ul
+            class="thumbs animated"
+            style="transform: translate3d(0,0,0); transition-duration: 350ms;"
+          >
+            <li
+              aria-label="slide item 1"
+              class="thumb selected"
+              role="button"
+              style="width: 80px;"
+              tabindex="0"
+            >
+              <img
+                alt="Ozymandias"
+                class="moovie_poster"
+                src="https://m.media-amazon.com/images/M/MV5BMTU1MjEwNjQ4MF5BMl5BanBnXkFtZTgwNzI2MTU5NTM@._V1_SX300.jpg"
+              />
+            </li>
+            <li
+              aria-label="slide item 2"
+              class="thumb"
+              role="button"
+              style="width: 80px;"
+              tabindex="0"
+            >
+              <img
+                alt="Battle of the Bastards"
+                class="moovie_poster"
+                src="https://m.media-amazon.com/images/M/MV5BZDFiZTNiMmItMDk5ZC00OGZmLTk3NmItODM5ZWE2YWMzZjliXkEyXkFqcGdeQXVyOTMyOTQyNzA@._V1_SX300.jpg"
+              />
+            </li>
+            <li
+              aria-label="slide item 3"
+              class="thumb"
+              role="button"
+              style="width: 80px;"
+              tabindex="0"
+            >
+              <img
+                alt="The Winds of Winter"
+                class="moovie_poster"
+                src="https://m.media-amazon.com/images/M/MV5BMTc0ZjQ5ODctYzRmNC00ZjQ3LWFlZDctN2NjNjY1MTliMjU3L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjkxMjM5Nzc@._V1_SX300.jpg"
+              />
+            </li>
+          </ul>
+          <button
+            aria-label="next slide / item"
+            class="control-arrow control-next"
+            type="button"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
